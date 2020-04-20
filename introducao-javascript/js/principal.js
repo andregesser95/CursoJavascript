@@ -1,32 +1,48 @@
+//busca pelos seletores css é uma boa prática e não por tags
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
-var paciente = document.querySelector("#primeiro-paciente");
+var pacientes = document.querySelectorAll(".paciente");
 
-var tdPeso = paciente.querySelector(".info-peso");
-var peso = tdPeso.textContent;
+for (let i = 0; i < pacientes.length; i++) {
+    var paciente = pacientes[i];
 
-var tdAltura = paciente.querySelector(".info-altura");
-var altura = tdAltura.textContent;
-
-var tdImc = paciente.querySelector(".info-imc");
-
-var pesoEhValido = true;
-var alturaEhValida = true;
-
-if (peso <= 0 || peso >= 1000) {
-    console.log("Peso inválido!");
-    pesoEhValido = false;
-    tdImc.textContent = "Peso inválido";
+    var tdPeso = paciente.querySelector(".info-peso");
+    var peso = tdPeso.textContent;
+    
+    var tdAltura = paciente.querySelector(".info-altura");
+    var altura = tdAltura.textContent;
+    
+    var tdImc = paciente.querySelector(".info-imc");
+    
+    var ehPesoValido = true;
+    var ehAlturaValida = true;
+    
+    if (peso <= 0 || peso >= 1000) {
+        console.log("Peso inválido!");
+        ehPesoValido = false;
+        tdImc.textContent = "Peso Inválido";
+        paciente.classList.add("paciente-invalido")
+    }
+    
+    if (altura <= 0 || altura >= 3) {
+        console.log("Altura Inválida!");
+        ehAlturaValida = false;
+        tdImc.textContent = "Altura Inválido";
+        paciente.classList.add("paciente-invalido")
+    }
+    
+    if (ehPesoValido && ehAlturaValida) {
+        var imc = peso / (altura * altura); // 100 / (2.0 * 2.0) = 100 / 4 =>>>> 25
+        tdImc.textContent = imc.toFixed(2);
+    }
+    
 }
 
-if (altura <= 0 || altura >= 3.00) {
-    console.log("Altura inválida!");
-    alturaEhValida = false;
-    tdImc.textContent = "Altura inválida";
-}
+titulo.addEventListener("click", function () {
+    console.log("olá só posso chamar uma função anonima.");
+});
 
-if (pesoEhValido && alturaEhValida) {
-    var imc = peso / (altura * altura);
-    tdImc.textContent = imc;
+function mostraMensagem() {
+    console.log("Olá, eu fui clicado!");
 }
