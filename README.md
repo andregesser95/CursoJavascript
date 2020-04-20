@@ -8,4 +8,7 @@
 - Boas Práticas com Javascript;
 - Validação de Formulários;
 - Filtrando uma tabela;
-- AjaxBuscando pacientes com AJAX.
+- Ajax: Buscando pacientes com AJAX.
+
+jQuery: Domine a biblioteca mais popular do mercado parte 1
+
